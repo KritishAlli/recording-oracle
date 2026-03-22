@@ -1,6 +1,6 @@
 async function getBackendStatus() {
   try {
-    const res = await fetch("http://127.0.0.1:8000/health")
+    const res = await fetch("http://backend:8000/health")
     const data = await res.json()
     return data
   }
