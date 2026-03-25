@@ -7,6 +7,10 @@ services:
       - "8000:8000"
     volumes:
       - ./backend:/app
+    environment:
+      - DATABASE_URL=postgresql://postgres:password@db:5432/meetingdb
+    depends_on:
+      - db
 
   frontend:
     build: ./frontend
@@ -17,3 +21,15 @@ services:
       - /app/node_modules
     depends_on:
       - backend
+  db:
+    image: "postgres:15"
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: meetingdb
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+volumes:
+  postgres_data:
