@@ -17,7 +17,8 @@ class Meeting(Base):
     id = Column(Integer, primary_key = True)
     title = Column(String)
     status = Column(String, default="pending")
-    created_at = Column(DateTime, default = datetime.utcnow())
+    created_at = Column(DateTime, default = datetime.utcnow)
+    s3_key = Column(String, nullable=True)
 
 class Transcript(Base):
     __tablename__ = "transcripts"

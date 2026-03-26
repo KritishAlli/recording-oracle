@@ -1,3 +1,5 @@
+import UploadForm from "./components/UploadForm"
+
 async function getBackendStatus() {
   try {
     const res = await fetch("http://backend:8000/health")
@@ -14,6 +16,7 @@ export default async function Home() {
     <main>
     <h1>Meeting Oracle</h1>
     <p>Backend Status: {status.status}</p>
+    <UploadForm  meetingId={1}/>
     </main>
   )
 };
